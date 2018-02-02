@@ -42,6 +42,25 @@ module.exports = function(app, db){
     });
 
     //U=Update
+    app.put('/notes/:id', (req, res) => {
+        const myDB = db.db('notesdb');
+
+        const id = req.params.id;
+        const details = {'id': new objectId(id)};
+        const note = {text: req.body.body, title: req.body.title};
+
+        myDB.collection('notes').update(details, note, (err, result) =>{
+
+            if (err){
+                res.send({'error': 'An error occured'});
+            }
+            else{
+                res.send(note);
+            }
+
+        });
+    });
+
 
     //D=Delete
 
