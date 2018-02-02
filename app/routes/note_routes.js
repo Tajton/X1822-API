@@ -80,6 +80,6 @@ module.exports = function(app, db){
         })
     });
 
-    console.log('deleted note')
+    console.log('deleted note');
 
 };
